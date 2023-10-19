@@ -2,10 +2,12 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { COLORS } from '../constants'
 import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { DrawerItem, createDrawerNavigator } from '@react-navigation/drawer';
 import About from '../components/About';
 import Education from '../components/Education';
 import Profile from '../components/Profile';
+import Login from '../components/Login';
+import Logout from '../components/Logout';
 
 const Home = () => {
   const Drawer =  createDrawerNavigator();
@@ -13,10 +15,12 @@ const Home = () => {
     <View style={styles.main}>
       <NavigationContainer>
             <Drawer.Navigator initialRouteName=''>
+                <Drawer.Screen name="Login" component={Login} />
                 <Drawer.Screen name="Profile" component={Profile} />
                 <Drawer.Screen name="About" component={About} />
                 <Drawer.Screen name="Education" component={Education} />
-            </Drawer.Navigator>
+                <Drawer.Screen name="Logout" component={Logout} />
+            </Drawer.Navigator>        
         </NavigationContainer>   
     </View>
   )
