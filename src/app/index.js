@@ -1,17 +1,27 @@
 import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { COLORS } from '../constants'
+import { NavigationContainer } from '@react-navigation/native';
+import { DrawerItem, createDrawerNavigator } from '@react-navigation/drawer';
+import About from '../components/About';
+import Education from '../components/Education';
+import Profile from '../components/Profile';
+import Login from '../components/Login';
+import Logout from '../components/Logout';
 
 const Home = () => {
+  const Drawer =  createDrawerNavigator();
   return (
     <View style={styles.main}>
-      <View style={styles.imageView}>
-        <Image style={styles.profileIMage} source={require('../../assets/profile.jpg')}></Image>
-      </View>
-      <View style={styles.titleView}>
-        <Text style={styles.name}>Atin Sahu</Text>
-        <Text style={styles.designation}>Frontend Developer</Text>
-      </View>
+      <NavigationContainer>
+            <Drawer.Navigator initialRouteName=''>
+                <Drawer.Screen name="Login" component={Login} />
+                <Drawer.Screen name="Profile" component={Profile} />
+                <Drawer.Screen name="About" component={About} />
+                <Drawer.Screen name="Education" component={Education} />
+                <Drawer.Screen name="Logout" component={Logout} />
+            </Drawer.Navigator>        
+        </NavigationContainer>   
     </View>
   )
 }
