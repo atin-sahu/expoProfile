@@ -19,28 +19,30 @@ const Profile = () => {
 export default Profile
 
 const styles = StyleSheet.create({
-    main:{
-        backgroundColor:COLORS.lemonLight,
-        justifyContent:"center",
-        flex:1
-    },
-    imageView:{
-        alignItems:"center",
-        marginVertical:30,
-    },
-    profileIMage:{
-        height:500,
-        width:'90%',
-        borderRadius:20,
-    },
-    titleView:{
-        alignItems:"center",
-    },
-    name:{
-        fontSize:32,
-        fontWeight:'500'
-    },
-    designation:{
-        fontSize:24
-    }
+  main: {
+    backgroundColor: COLORS.secondary,
+    justifyContent: "center",
+    flex: 1
+  },
+  imageView: {
+    alignItems: "center",
+    marginVertical: 30,
+  },
+  profileIMage: {
+    height: 500,
+    width: '90%',
+    borderRadius: 20,
+  },
+  titleView: {
+    alignItems: "center",
+  },
+  name: {
+    fontSize: 32,
+    fontWeight: '500',
+    color:COLORS.primaryLight
+  },
+  designation: {
+    fontSize: 24,
+    color:COLORS.primaryLight
+  }
 })

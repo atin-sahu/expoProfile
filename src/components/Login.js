@@ -11,8 +11,6 @@ const Login = () => {
     const [mobile, setMobile] = useState()
     const { phone } = useSelector((state)=> state.auth )
 
-    console.log("phone--",phone)
-
     return (
         <View style={styles.main}>
             <TextInput
