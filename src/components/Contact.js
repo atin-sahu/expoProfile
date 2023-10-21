@@ -39,6 +39,13 @@ export const Contact = () => {
                     </View>
                 </View>
 
+                <View style={styles.emailView}>
+                    <MaterialCommunityIcons name="instagram" size={30} color={COLORS.primaryLight} />
+                    <View>
+                        <Text style={styles.normalText}>Instagram</Text>
+                    </View>
+                </View>
+
             </ScrollView>
         </View>
     )
