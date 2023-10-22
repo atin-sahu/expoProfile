@@ -8,6 +8,9 @@ import Education from '../components/Education';
 import Profile from '../components/Profile';
 import Login from '../components/Login';
 import Logout from '../components/Logout';
+import Skills from '../components/Skills';
+import Projects from '../components/Projects';
+import { Contact } from '../components/Contact';
 
 const Home = () => {
   const Drawer =  createDrawerNavigator();
@@ -19,6 +22,9 @@ const Home = () => {
                 <Drawer.Screen name="Profile" component={Profile} />
                 <Drawer.Screen name="About" component={About} />
                 <Drawer.Screen name="Education" component={Education} />
+                <Drawer.Screen name="Skills" component={Skills} />
+                <Drawer.Screen name="Projects" component={Projects} />
+                <Drawer.Screen name="Contact" component={Contact} />
                 <Drawer.Screen name="Logout" component={Logout} />
             </Drawer.Navigator>        
         </NavigationContainer>   
