@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { COLORS } from '../constants'
+import { Link } from 'expo-router'
 
 const About = () => {
   return (
@@ -17,8 +18,9 @@ const About = () => {
         I am very good in HTML, CSS, Bootstrap, JavaScript, React, Chakra UI, Tailwind, Express, Node.js, MongoDB.{'\n'} {'\n'}
         Now, I am looking forward to a job opportunity in a fast moving and reputed organization. 
         Where I could prove my technical skills, leadership's skill, creativity, teamwork.{'\n'} {'\n'}
-        You can take a look at my work here - https://github.com/atin-sahu
+        You can take a look at my work here -{'\n'}
       </Text>
+      <Link style={styles.normalText} href={'https://github.com/atin-sahu'}>https://github.com/atin-sahu</Link>
     </View>
   )
 }

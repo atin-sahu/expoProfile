@@ -2,6 +2,7 @@ import React from 'react'
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { COLORS } from '../constants'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Link } from 'expo-router';
 
 export const Contact = () => {
     return (
@@ -12,13 +13,6 @@ export const Contact = () => {
                 </View>
 
                 <View style={styles.emailView}>
-                    <MaterialCommunityIcons name="gmail" size={30} color={COLORS.primaryLight} />
-                    <View>
-                        <Text style={styles.normalText}>jayshiv7171@gmail.com</Text>
-                    </View>
-                </View>
-
-                <View style={styles.emailView}>
                     <MaterialCommunityIcons name="phone" size={30} color={COLORS.primaryLight} />
                     <View>
                         <Text style={styles.normalText}>+91 63919 771771</Text>
@@ -26,25 +20,33 @@ export const Contact = () => {
                 </View>
 
                 <View style={styles.emailView}>
+                    <MaterialCommunityIcons name="gmail" size={30} color={COLORS.primaryLight} />
+                    <View>
+                        <Text style={styles.normalText}>jayshiv7171@gmail.com</Text>
+                    </View>
+                </View>
+
+
+                <View style={styles.emailView}>
                     <MaterialCommunityIcons name="github" size={30} color={COLORS.primaryLight} />
                     <View>
-                        <Text style={styles.normalText}>https://github.com/atin-sahu</Text>
+                        <Link href={'https://github.com/atin-sahu'} style={styles.normalText}>https://github.com/atin-sahu</Link>
                     </View>
                 </View>
 
                 <View style={styles.emailView}>
                     <MaterialCommunityIcons name="linkedin" size={30} color={COLORS.primaryLight} />
                     <View>
-                        <Text style={styles.normalText}>www.linkedin.com/in/atin-sahu/</Text>
+                        <Link href={'https://www.linkedin.com/in/atin-sahu/'} style={styles.normalText}>www.linkedin.com/in/atin-sahu/</Link>
                     </View>
                 </View>
 
-                <View style={styles.emailView}>
+                {/* <View style={styles.emailView}>
                     <MaterialCommunityIcons name="instagram" size={30} color={COLORS.primaryLight} />
                     <View>
-                        <Text style={styles.normalText}>Instagram</Text>
+                        <Link href={'https://www.instagram.com/'} style={styles.normalText}>www.instagram.com/</Link>
                     </View>
-                </View>
+                </View> */}
 
             </ScrollView>
         </View>
