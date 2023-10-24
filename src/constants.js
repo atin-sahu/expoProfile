@@ -13,4 +13,10 @@ export const COLORS = {
     gray:"#E0E0E0",
     lemonLight:"#e4f5e7",
 }
+
+export const inputTheme = {
+    colors: {
+      primary: COLORS.secondary
+    },
+  };
   
