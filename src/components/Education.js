@@ -146,23 +146,21 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: COLORS.primaryLight,
   },
-  boldText: {
-    fontSize: 20,
-    color: COLORS.primaryLight,
-    fontWeight: '500'
-  },
   instituteText: {
     fontSize: 24,
     fontStyle: 'italic',
-    fontWeight: '500'
+    fontWeight: '500',
+    color: COLORS.secondary,
   },
   courseText: {
     fontSize: 20,
-    fontWeight: '500'
+    fontWeight: '500',
+    // color: COLORS.secondary,
   },
   dateText: {
     fontSize: 16,
-    fontWeight: '500'
+    fontWeight: '500',
+    // color: COLORS.secondary,
   },
   instituteView: {
     marginVertical: 5,
