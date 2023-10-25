@@ -1,10 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { COLORS } from '../../constants'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Link } from 'expo-router';
+import { Button } from 'react-native-paper';
+import { AddProject } from './components/AddProject';
+
+const form = { 
+    projectName:'',
+    startDate:'',
+    endDate:'',
+    gitUrl:'',
+    liveUrl:'',
+    techStack:[],
+    description:'',
+  }
 
 const Projects = () => {
+
+    const [isAdd, setIsAdd] = useState(false)    
+
+    const handleAdd = () => {
+        if (isAdd) {
+            //   dispatch(updateInstitutes([...institutes, education]))
+            //   setEducation(form)
+            //   setIsAdd(false)
+        } else {
+            setIsAdd(true)
+        }
+    }
+
+    const handleDiscard = () => {
+        setIsAdd(false)
+        // setEducation(form)
+    }
+
     return (
         <View style={styles.main}>
             <ScrollView style={styles.scrollViewStyles} keyboardShouldPersistTaps='handled'>
@@ -47,9 +77,36 @@ const Projects = () => {
                     </View>
 
                     <View style={styles.titleView}>
-                        <Text style={[styles.linkText, {textAlign:'right'}]}>View more...</Text>
+                        <Text style={[styles.linkText, { textAlign: 'right' }]}>View more...</Text>
                     </View>
 
+                </View>
+
+                {isAdd ? 
+                    <AddProject />
+                    : null
+                }
+
+                <View style={styles.addBtnView}>
+                    <Button
+                        icon=""
+                        mode="contained"
+                        onPress={handleAdd}
+                        style={{ backgroundColor: COLORS.primaryLight, width: '40%' }}
+                    >
+                        <Text style={{ color: COLORS.secondary, fontSize: 18, fontWeight: '800' }}>{isAdd ? 'Save' : 'Add New'}</Text>
+                    </Button>
+                    {isAdd ?
+                        <Button
+                            icon=""
+                            mode="contained"
+                            onPress={handleDiscard}
+                            style={{ backgroundColor: COLORS.primaryLight, width: '40%' }}
+                        >
+                            <Text style={{ color: COLORS.secondary, fontSize: 18, fontWeight: '800' }}>Discard</Text>
+                        </Button>
+                        : null
+                    }
                 </View>
             </ScrollView>
         </View>
@@ -64,7 +121,7 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.secondary,
     },
     scrollViewStyles: {
-        padding: 10
+        paddingHorizontal:10,
     },
     projectView: {
         paddingVertical: 10,
@@ -75,8 +132,8 @@ const styles = StyleSheet.create({
     titleText: {
         fontSize: 18,
         color: COLORS.secondary,
-        fontStyle:'italic',
-        fontWeight:'600'
+        fontStyle: 'italic',
+        fontWeight: '600'
     },
     linkText: {
         fontSize: 14,
@@ -86,7 +143,7 @@ const styles = StyleSheet.create({
     dateText: {
         fontSize: 14,
         fontWeight: '500',
-        marginBottom:5,
+        marginBottom: 5,
     },
     projectName: {
         fontSize: 24,
@@ -100,20 +157,25 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 5,
     },
-    titleView:{
-        marginTop:5
+    titleView: {
+        marginTop: 5
     },
-    techView:{
-        paddingHorizontal:10,
-        paddingVertical:5,
+    techView: {
+        paddingHorizontal: 10,
+        paddingVertical: 5,
     },
-    techText:{
-        fontSize:14,
-        fontWeight:'500',
+    techText: {
+        fontSize: 14,
+        fontWeight: '500',
         // textTransform:'uppercase'
     },
-    descriptionText:{
-        fontSize:16,
-        fontStyle:'italic',
+    descriptionText: {
+        fontSize: 16,
+        fontStyle: 'italic',
+    },
+    addBtnView: {
+        marginTop: 10,
+        flexDirection: 'row',
+        gap: 5
     }
 })
