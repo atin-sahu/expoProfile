@@ -5,30 +5,36 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Link } from 'expo-router';
 import { Button } from 'react-native-paper';
 import { AddProject } from './components/AddProject';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateIsAdd } from '../../store/projectSlice';
 
-const form = { 
-    projectName:'',
-    startDate:'',
-    endDate:'',
-    gitUrl:'',
-    liveUrl:'',
-    techStack:[],
-    description:'',
-  }
+// const form = { 
+//     projectName:'',
+//     startDate:'',
+//     endDate:'',
+//     gitUrl:'',
+//     liveUrl:'',
+//     techStack:[],
+//     description:'',
+//   }
 
 const Projects = () => {
 
-    const [isAdd, setIsAdd] = useState(false)    
+    // const [isAdd, setIsAdd] = useState(false)
+    const dispatch = useDispatch()
+    const { projects, isAdd } = useSelector((state) => state.projects)
+    console.log("projects--", projects)
+    console.log("isAdd--", isAdd)
 
-    const handleAdd = () => {
-        if (isAdd) {
-            //   dispatch(updateInstitutes([...institutes, education]))
-            //   setEducation(form)
-            //   setIsAdd(false)
-        } else {
-            setIsAdd(true)
-        }
-    }
+    // const handleAdd = () => {
+    //     if (isAdd) {
+    //         //   dispatch(updateInstitutes([...institutes, education]))
+    //         //   setEducation(form)
+    //         //   setIsAdd(false)
+    //     } else {
+    //         setIsAdd(true)
+    //     }
+    // }
 
     const handleDiscard = () => {
         setIsAdd(false)
@@ -82,32 +88,22 @@ const Projects = () => {
 
                 </View>
 
-                {isAdd ? 
-                    <AddProject />
-                    : null
-                }
-
-                <View style={styles.addBtnView}>
+                {!isAdd ?
                     <Button
                         icon=""
                         mode="contained"
-                        onPress={handleAdd}
+                        onPress={() => dispatch(updateIsAdd(true))}
                         style={{ backgroundColor: COLORS.primaryLight, width: '40%' }}
                     >
-                        <Text style={{ color: COLORS.secondary, fontSize: 18, fontWeight: '800' }}>{isAdd ? 'Save' : 'Add New'}</Text>
+                        <Text style={{ color: COLORS.secondary, fontSize: 18, fontWeight: '800' }}>{'Add New'}</Text>
                     </Button>
-                    {isAdd ?
-                        <Button
-                            icon=""
-                            mode="contained"
-                            onPress={handleDiscard}
-                            style={{ backgroundColor: COLORS.primaryLight, width: '40%' }}
-                        >
-                            <Text style={{ color: COLORS.secondary, fontSize: 18, fontWeight: '800' }}>Discard</Text>
-                        </Button>
-                        : null
-                    }
-                </View>
+                    : null
+                }
+
+                {isAdd ?
+                    <AddProject />
+                    : null
+                }
             </ScrollView>
         </View>
     )
@@ -121,9 +117,10 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.secondary,
     },
     scrollViewStyles: {
-        paddingHorizontal:10,
+        paddingHorizontal: 10,
     },
     projectView: {
+        marginTop: 20,
         paddingVertical: 10,
         paddingHorizontal: 20,
         borderRadius: 10,
@@ -175,7 +172,8 @@ const styles = StyleSheet.create({
     },
     addBtnView: {
         marginTop: 10,
+        marginBottom: 20,
         flexDirection: 'row',
-        gap: 5
+        justifyContent: 'space-between'
     }
 })

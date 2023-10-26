@@ -191,6 +191,6 @@ const styles = StyleSheet.create({
   addBtnView: {
     marginTop: 10,
     flexDirection:'row',
-    gap:5
+    justifyContent:'space-between'
   }
 })
