@@ -1,22 +1,30 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { COLORS, inputTheme } from '../../../constants'
-import { TextInput } from 'react-native-paper'
-
-const form = {
-    projectName: '',
-    startDate: '',
-    endDate: '',
-    gitUrl: '',
-    liveUrl: '',
-    techStack: [],
-    description: '',
-}
+import { Button, TextInput } from 'react-native-paper'
+import { useDispatch, useSelector } from 'react-redux'
+import { initProjectForm, updateIsAdd, updateProjectForm, updateProjects } from '../../../store/projectSlice'
 
 export const AddProject = () => {
 
-    const [project, setProject] = useState(form)
-    console.log("project--", project)
+    const dispatch = useDispatch()
+
+    const { isAdd, projects, projectForm } = useSelector((state) => state.projects)
+
+    const handleAdd = () => {
+        if (isAdd) {
+            dispatch(updateProjects([...projects, projectForm]))
+            dispatch(updateProjectForm(initProjectForm))
+            dispatch(updateIsAdd(false))
+        } else {
+            dispatch(updateIsAdd(true))
+        }
+    }
+
+    const handleDiscard = () => {
+        dispatch(updateIsAdd(false))
+        dispatch(updateProjectForm(initProjectForm))
+    }
 
     return (
         <View>
@@ -26,8 +34,8 @@ export const AddProject = () => {
                     mode='flat'
                     label={'Project name'}
                     placeholder='Enter Project name'
-                    value={project?.projectName}
-                    onChangeText={(value) => setProject({ ...project, projectName: value })}
+                    value={projectForm?.projectName}
+                    onChangeText={(value) => dispatch(updateProjectForm({ ...projectForm, projectName: value }))}
                     style={styles.inputStyle}
                     theme={inputTheme}
                 />
@@ -36,8 +44,8 @@ export const AddProject = () => {
                     mode='flat'
                     label={'Github URL'}
                     placeholder='Enter Github URL'
-                    value={project?.gitUrl}
-                    onChangeText={(value) => setProject({ ...project, gitUrl: value })}
+                    value={projectForm?.gitUrl}
+                    onChangeText={(value) => dispatch(updateProjectForm({ ...projectForm, gitUrl: value }))}
                     style={styles.inputStyle}
                     theme={inputTheme}
                 />
@@ -46,8 +54,8 @@ export const AddProject = () => {
                     mode='flat'
                     label={'Live URL'}
                     placeholder='Enter Live URL'
-                    value={project?.liveUrl}
-                    onChangeText={(value) => setProject({ ...project, liveUrl: value })}
+                    value={projectForm?.liveUrl}
+                    onChangeText={(value) => dispatch(updateProjectForm({ ...projectForm, liveUrl: value }))}
                     style={styles.inputStyle}
                     theme={inputTheme}
                 />
@@ -56,8 +64,8 @@ export const AddProject = () => {
                     mode='flat'
                     label={'Description'}
                     placeholder='Enter Description'
-                    value={project?.description}
-                    onChangeText={(value) => setProject({ ...project, description: value })}
+                    value={projectForm?.description}
+                    onChangeText={(value) => dispatch(updateProjectForm({ ...projectForm, description: value }))}
                     multiline={true}
                     numberOfLines={5}
                     style={styles.inputStyle}
@@ -67,24 +75,20 @@ export const AddProject = () => {
 
             <View style={styles.addBtnView}>
                 <Button
-                    icon=""
                     mode="contained"
                     onPress={handleAdd}
-                    style={{ backgroundColor: COLORS.primaryLight, width: '40%' }}
+                    style={{ backgroundColor: COLORS.primaryLight, width: '40%'}}
                 >
                     <Text style={{ color: COLORS.secondary, fontSize: 18, fontWeight: '800' }}>{isAdd ? 'Save' : 'Add New'}</Text>
                 </Button>
-                {isAdd ?
-                    <Button
-                        icon=""
-                        mode="contained"
-                        onPress={handleDiscard}
-                        style={{ backgroundColor: COLORS.primaryLight, width: '40%' }}
-                    >
-                        <Text style={{ color: COLORS.secondary, fontSize: 18, fontWeight: '800' }}>Discard</Text>
-                    </Button>
-                    : null
-                }
+
+                <Button
+                    mode="contained"
+                    onPress={handleDiscard}
+                    style={{ backgroundColor: COLORS.primaryLight, width: '40%'}}
+                >
+                    <Text style={{ color: COLORS.secondary, fontSize: 18, fontWeight: '800' }}>Discard</Text>
+                </Button>    
             </View>
         </View>
     )

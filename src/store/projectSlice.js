@@ -1,8 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export const initProjectForm = {
+    projectName: '',
+    startDate: '',
+    endDate: '',
+    gitUrl: '',
+    liveUrl: '',
+    techStack: [],
+    description: '',
+}
+
 const projectSlice = createSlice({
     name: "projectSlice",
     initialState: {
+        projectForm: initProjectForm,
         loading: false,
         projects: [],
         isAdd:false,
@@ -13,6 +24,9 @@ const projectSlice = createSlice({
         }),
         updateIsAdd:((state,action) => {
             state.isAdd = action.payload
+        }),
+        updateProjectForm:((state,action) => {
+            state.projectForm = action.payload
         })
     },
 });
@@ -20,5 +34,6 @@ const projectSlice = createSlice({
 export const {
     updateProjects,
     updateIsAdd,
+    updateProjectForm,
 } = projectSlice.actions;
 export default projectSlice.reducer;
