@@ -8,12 +8,14 @@ import authSlice from "./authSlice";
 import userSlice from "./userSlice";
 import educationSlice from "./educationSlice";
 import projectSlice from "./projectSlice";
+import skillSlice from "./skillSlice";
 
 const rootReducer = combineReducers({
     auth: authSlice,
     user: userSlice,
     education: educationSlice,
-    projects: projectSlice
+    projects: projectSlice,
+    skill: skillSlice
 });
 
 const persistConfig = {
