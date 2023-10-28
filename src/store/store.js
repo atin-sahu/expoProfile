@@ -7,17 +7,21 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import authSlice from "./authSlice";
 import userSlice from "./userSlice";
 import educationSlice from "./educationSlice";
+import projectSlice from "./projectSlice";
+import skillSlice from "./skillSlice";
 
 const rootReducer = combineReducers({
     auth: authSlice,
     user: userSlice,
-    education:educationSlice
+    education: educationSlice,
+    projects: projectSlice,
+    skill: skillSlice
 });
 
 const persistConfig = {
     key: "root",
     storage: AsyncStorage,
-    blacklist: [],
+    blacklist: [''],
     debug: false
 };
 
