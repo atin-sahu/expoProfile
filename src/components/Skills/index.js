@@ -11,8 +11,7 @@ const Skills = () => {
 
     const dispatch = useDispatch()
     const { skills, isAddSkill } = useSelector((state) => state.skill)
-    console.log("isAddSkill--", isAddSkill)
-    console.log("skills--", skills)
+    
     return (
         <View style={styles.main}>
             <ScrollView style={styles.scrollViewStyles} keyboardShouldPersistTaps='handled'>
