@@ -11,6 +11,7 @@ import Logout from '../components/Logout';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import { Contact } from '../components/Contact';
+import { VideoPlayer } from '../components/VideoPlayer';
 
 const Home = () => {
   const Drawer =  createDrawerNavigator();
@@ -18,6 +19,7 @@ const Home = () => {
     <View style={styles.main}>
       <NavigationContainer>
             <Drawer.Navigator initialRouteName=''>
+                <Drawer.Screen name="Vedio" component={VideoPlayer} />
                 <Drawer.Screen name="Skills" component={Skills} />
                 <Drawer.Screen name="Projects" component={Projects} />
                 <Drawer.Screen name="Login" component={Login} />
