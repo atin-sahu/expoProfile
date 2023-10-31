@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { COLORS } from '../constants'
 import { NavigationContainer } from '@react-navigation/native';
 import { DrawerItem, createDrawerNavigator } from '@react-navigation/drawer';
@@ -12,21 +12,30 @@ import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import { Contact } from '../components/Contact';
 import { VideoPlayer } from '../components/VideoPlayer';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-const Home = () => {
+const Home = ({navigation}) => {
   const Drawer =  createDrawerNavigator();
+  console.log("navigation",Drawer.Navigator)
   return (
     <View style={styles.main}>
       <NavigationContainer>
-            <Drawer.Navigator initialRouteName=''>
-                <Drawer.Screen name="Vedio" component={VideoPlayer} />
-                <Drawer.Screen name="Skills" component={Skills} />
-                <Drawer.Screen name="Projects" component={Projects} />
-                <Drawer.Screen name="Login" component={Login} />
+            <Drawer.Navigator initialRouteName='' headerRight={() => <Text>HOme</Text>}>
+                <Drawer.Screen 
+                    name="Login"
+                    component={Login}
+                    options={
+                        {
+                            headerRight:() => <MaterialCommunityIcons size={20} name='home' />
+                        }
+                    }
+                />
                 <Drawer.Screen name="Profile" component={Profile} />
-                <Drawer.Screen name="About" component={About} />
                 <Drawer.Screen name="Education" component={Education} />
+                <Drawer.Screen name="Projects" component={Projects} />
+                <Drawer.Screen name="Skills" component={Skills} />
                 <Drawer.Screen name="Contact" component={Contact} />
+                <Drawer.Screen name="About" component={About} />
                 <Drawer.Screen name="Logout" component={Logout} />
             </Drawer.Navigator>        
         </NavigationContainer>   
