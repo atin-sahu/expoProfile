@@ -20,7 +20,7 @@ const About = () => {
         Where I could prove my technical skills, leadership's skill, creativity, teamwork.{'\n'} {'\n'}
         You can take a look at my work here -{'\n'}
       </Text>
-      <Link style={styles.normalText} href={'https://github.com/atin-sahu'}>https://github.com/atin-sahu</Link>
+      <Link style={styles.linkText} href={'https://github.com/atin-sahu'}>https://github.com/atin-sahu</Link>
     </View>
   )
 }
@@ -38,5 +38,11 @@ const styles = StyleSheet.create({
     fontSize:20,
     color:COLORS.primaryLight,
     textAlign:'center'
+  },
+  linkText:{
+    fontSize:18,
+    color:COLORS.errorLight,
+    textAlign:'center',
+    fontStyle:"italic"
   }
 })
