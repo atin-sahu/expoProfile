@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AntDesign } from '@expo/vector-icons';
 import { Button, TextInput } from 'react-native-paper';
 import { setIsEdit, updateUserPersionalForm } from '../store/userSlice';
+// did not get time to do code today !
 
 const Profile = () => {
 
@@ -14,7 +15,6 @@ const Profile = () => {
 
   const { institutes } = useSelector((state) => state.education)
   const { isEdit, userPersionalForm } = useSelector((state) => state.user)
-  console.log("isEdit--", isEdit)
 
   const handleUpdate = () => {
     dispatch(setIsEdit(false));
@@ -36,12 +36,12 @@ const Profile = () => {
                 <Text style={styles.titleText}>Personal Details :</Text>
                 <AntDesign name="edit" size={20} color={COLORS.error} onPress={() => dispatch(setIsEdit(true))} />
               </View>
-              <Text style={styles.name}>Atin Sahu</Text>
-              <Text style={styles.designation}>Frontend Developer </Text>
+              <Text style={styles.name}>{userPersionalForm?.name}</Text>
+              <Text style={styles.designation}>{userPersionalForm?.designation}</Text>
               <Text style={styles.dateOfBirth}>06/03/2002</Text>
               <Text style={styles.dateOfBirth}>Male</Text>
               <Text style={styles.dateOfBirth}>Unmarried</Text>
-              <Text style={styles.dateOfBirth}>Narayan Kheda, Bani, Banthra, Sarojani Nagar, Lucknow, U.P. India </Text>
+              <Text style={styles.dateOfBirth}>{userPersionalForm?.address}</Text>
 
               {institutes?.length
                 ? <Text style={styles.titleText}>Education Details :</Text>
