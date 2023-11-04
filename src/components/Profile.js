@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AntDesign } from '@expo/vector-icons';
 import { Button, TextInput } from 'react-native-paper';
 import { setIsEdit, updateUserPersionalForm } from '../store/userSlice';
+// did not get time to do code today !
 
 const Profile = () => {
 
