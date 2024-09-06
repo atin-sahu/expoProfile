@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "acme",
     "name": "expoProfile",
     "slug": "expoProfile",
     "version": "1.0.0",
